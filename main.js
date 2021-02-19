@@ -15,15 +15,15 @@ let playerWins = 0;
 //     // start.disabled = true; //disable button to start
 //     start.style.backgroundColor = "gray";
 // start.style.borderColor = "lightgray";
-//     let time = document.getElementById('clock');
-//     // calling the clock and starting the timer
-//     time.textContent = parseInt(time.textContent);
-//     // makes the 0 which is a string, into a number, so it can add
-//     let intervalFunction = setInterval(function () {
-//         // this is where a second adds on each time?
-//         let counter = parseInt(time.textContent) + 1;
-//         time.textContent = counter;
-//     }, 1000);
+// let time = document.getElementById('clock');
+// // calling the clock and starting the timer
+// time.textContent = parseInt(time.textContent);
+// // makes the 0 which is a string, into a number, so it can add
+// let intervalFunction = setInterval(function () {
+//     // this is where a second adds on each time?
+//     let counter = parseInt(time.textContent) + 1;
+//     time.textContent = counter;
+// }, 1000);
 //     // adding 1000 milliseconds aka one second
 //     stop.addEventListener("click", (evt) => {
 //         clearInterval(intervalFunction)  // stop button stops it from counting
@@ -39,37 +39,65 @@ gameStart();
 
 function gameStart() {
   status.innerHTML = `It's ${currentPlayer} 's turn`; //this displays current player turn
-  start.addEventListener("click", playerTurn);
+  start.addEventListener("click", firstTurn);
 }
 
-function playerTurn() {
+function firstTurn() {
   start.style.backgroundColor = "gray";
   start.style.borderColor = "lightgray";
   start.disabled = true;
   status.textContent = `It's ${currentPlayer} 's turn`;
+  let time = document.getElementById("clock");
+  // calling the clock and starting the timer
+  time.textContent = parseInt(time.textContent);
+  // makes the 0 which is a string, into a number, so it can add
+  let intervalFunction = setInterval(function () {
+    // this is where a second adds on each time?
+    let counter = parseInt(time.textContent) + 1;
+    time.textContent = counter;
+  }, 1000);
 }
 
 function newPlayerTurn(evt) {
   currentPlayer = currentPlayer === "O" ? "X" : "O";
-  status.textContent = `It's ${currentPlayer} 's turn`;
-  
+  if (currentPlayer === "X") {
+    status.textContent = `It's ${lowerString1}'s turn!`;
+    console.log(lowerString1);
+  } else if (currentPlayer === "O") {
+    status.textContent = `It's ${lowerString2}'s turn!`;
+    console.log(lowerString2);
+  }
 }
+///NOT WORKING HEHEHE LOWER STRINGS NOT DEFINEDDDD HOW R WE FOOKIN UP
+
+// name grabber
+let title = document.getElementById("title");
+let inputForm = document.getElementById("user-form");
+
+inputForm.addEventListener("submit", (evt) => {
+  evt.preventDefault();
+  let userInput1 = document.getElementById("name1").value;
+  let userInput2 = document.getElementById("name2").value;
+  //name 1 & 2 input
+  let lowerString1 = userInput1.toString().toLowerCase();
+  let lowerString2 = userInput2.toString().toLowerCase();
+  title.textContent = `Hello, ${lowerString1} and ${lowerString2}!`;
+});
 
 //   for (let player of currentPlayer) {
-//   player.removeEventListener ("click", playerTurn)
+//   player.removeEventListener ("click", firstTurn)
 //   }
-
 
 function selectedCell(clickedCell, cellIndex) {
   //gameState[cellIndex] = currentPlayer;
-  if (clickedCell.innerHTML != ""){
-      window.alert('please select an empty cell');
-  } else { 
-        clickedCell.innerHTML = currentPlayer; 
-        newPlayerTurn();
-    }
-};
-// if selectedCell != '0', then alert(please select an empty cell) & returns to playerTurn (aka their turn doesn't end)
+  if (clickedCell.innerHTML != "") {
+    window.alert("please select an empty cell");
+  } else {
+    clickedCell.innerHTML = currentPlayer;
+    newPlayerTurn();
+  }
+}
+// if selectedCell != '0', then alert(please select an empty cell) & returns to firstTurn (aka their turn doesn't end)
 
 // const winningConditions = [
 //   [0, 1, 2],
@@ -82,7 +110,23 @@ function selectedCell(clickedCell, cellIndex) {
 //   [0, 4, 8],
 // ];
 
+// let win1 = ['cell-0', 'cell-1', 'cell-2']
+// let cellArray = ["X"]
 
+// if (evt.target.id === "cell-0") {
+// cellArray.push("X")
+// }
+
+// function winningMessage () => {
+// if(cell1.textContent === cell2.textContent && cell1.textContent === cell0.textContent) {
+//   window.alert ("you win!")
+//} // winnie to type out the possible combos - ifs for all combos
+
+//else lose message
+//}
+
+//NAME FUNCTION
+//and then disable the buttons once they are entered...
 
 // when user clicks a box, an X appears
 let cell0 = document.getElementById("cell-0");
