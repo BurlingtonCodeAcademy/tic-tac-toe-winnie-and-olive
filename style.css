@@ -59,3 +59,14 @@ h2 {
     border: 1px solid red;
     background-color: coral;
 }
+/*possibly our strikethrough*/
+#strikethrough{
+    display: none;
+    position: absolute;
+    height: 5px;
+}
+#strikethrough div{
+    background-color: black;
+    height: 5px;
+    width: 0px;
+}

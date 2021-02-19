@@ -3,6 +3,9 @@ let stop = document.getElementById("stop"); //this is to stop clock...
 // let status = document.getElementById("status"); //this shows who turn it is
 let compOMove = document.getElementById("compOMove");
 let playerXMove = document.getElementById("playerXMove");
+let playerVSPlayer = document.getElementById("p-v-p");
+let playerVSComp = document.getElementById("p-v-c");
+// let selectMode = document.getElementById("selectMode");
 
 // let interval = 0;
 let compWins = 0;
@@ -18,28 +21,6 @@ let cell6 = document.getElementById("cell-6");
 let cell7 = document.getElementById("cell-7");
 let cell8 = document.getElementById("cell-8");
 
-// changing button color on click (graying it out)
-//BUTTON DISAPPEARS NEED TO FIX !!!
-// let gameStart = start.addEventListener('click', (evt) => {
-//     status.textContent = `it's ${currentPlayer}'s turn!`;
-//     // start.disabled = true; //disable button to start
-//     start.style.backgroundColor = "gray";
-// start.style.borderColor = "lightgray";
-// let time = document.getElementById('clock');
-// // calling the clock and starting the timer
-// time.textContent = parseInt(time.textContent);
-// // makes the 0 which is a string, into a number, so it can add
-// let intervalFunction = setInterval(function () {
-//     // this is where a second adds on each time?
-//     let counter = parseInt(time.textContent) + 1;
-//     time.textContent = counter;
-// }, 1000);
-//     // adding 1000 milliseconds aka one second
-//     stop.addEventListener("click", (evt) => {
-//         clearInterval(intervalFunction)  // stop button stops it from counting
-//     });
-// });
-
 let status = document.getElementById("status");
 let gameActive = true; //whether game is restarted
 let currentPlayer = "X"; //this will be changed, but starts with player/user X
@@ -48,6 +29,45 @@ let lowerString1 = "X";
 let lowerString2 = "O";
 
 gameStart();
+
+// function selectMode() {
+//   evt.preventDefault();
+//   ("click", (evt) => {
+//       selectMode.addEventListener;
+//       if (evt.target.id === "playerVSPlayer") {
+//         nameGrabber();
+//       } else if (evt.target.id === "playerVSComp") process.exit();
+//     });
+// }
+playerVSPlayer.addEventListener("click", selectMode);
+playerVSComp.addEventListener("click", selectMode);
+
+start.disabled = true;
+let userForm = document.getElementById("user-form");
+userForm.style.display = "none";
+
+
+// userForm.disabled = true; //style attribute to make it not display 
+function selectMode(evt) {
+  // evt.preventDefault();
+  if (evt.target.id === "p-v-p") {
+    console.log("pvp has been clicked");
+    start.disabled = false;
+    playerVSComp.style.display = "none";
+    userForm.style.display = "block";
+    //display properties to hide the boxes/ buttons 
+    // put in code for asking for name and then prompting the click button 
+    // calling functions we have defined for regular gameplay
+    // we could use display properties to hide them from the page (the name inputs) look into disabled and display properties 
+  } else if (evt.target.id === "p-v-c") {
+    console.log("pvc has been clicked");
+    start.disabled = false;
+   playerVSPlayer.style.display = "none";
+    // put in code for computer player gameplay 
+  }
+}
+
+
 
 function gameStart() {
   status.innerHTML = `It's ${currentPlayer} 's turn`; //this displays current player turn
@@ -86,6 +106,8 @@ function newPlayerTurn(evt) {
 let title = document.getElementById("title");
 let inputForm = document.getElementById("user-form");
 
+// function nameGrabber() {
+  
 inputForm.addEventListener("submit", (evt) => {
   evt.preventDefault();
   let userInput1 = document.getElementById("name1").value;
@@ -111,8 +133,6 @@ function selectedCell(clickedCell, cellIndex) {
 }
 // if selectedCell != '0', then alert(please select an empty cell) & returns to firstTurn (aka their turn doesn't end)
 
-///WINNING CONDITIONS COMMENTED OUT FOR NOWWW
-
 const winningConditions = [
   [cell0, cell1, cell2],
   [cell0, cell3, cell6],
@@ -124,68 +144,29 @@ const winningConditions = [
   [cell0, cell4, cell8],
 ];
 
-function winCheck(){
-  console.log("winnningcheck")
-for (let win of winningConditions) {
-  if (
-    win[0].textContent !== "" &&
-    win[1].textContent !== "" &&
-    win[2].textContent !== "" &&
-  win[0].textContent === win[1].textContent && win[0].textContent === win[2].textContent
-   ) {
-    window.alert("you win!");
+function winCheck() {
+  console.log("winnningcheck");
+  for (let win of winningConditions) {
+    if (
+      win[0].textContent !== "" &&
+      win[1].textContent !== "" &&
+      win[2].textContent !== "" &&
+      win[0].textContent === win[1].textContent &&
+      win[0].textContent === win[2].textContent
+    ) {
+      status.textContent = `you win!`; //timing function to delay the alert (set interval and set timeout)
+     // clear the board function? to make the board empty and unclickab
+      // function winAnimation(){
+      //   document.getElementById("strikethrough")
+    }
+    // gameActive = false;
   }
-  
-}}
-
-
-// if (playedCells[selectedCell] !== '' )
-// let win1 = ['cell-0', 'cell-1', 'cell-2']
-// let cellArray = ["X"]
-
-// if (evt.target.id === "cell-0") {
-// cellArray.push("X")
-// }
-
-//  winningMessage () => {
-// if(cell1.textContent === cell2.textContent && cell1.textContent === cell0.textContent) {
-//   window.alert ("you win!")
-// }
-// if (cell0.textContent === cell3.textContent && cell0.textContent === cell6.textContent) {
-//   window.alert ("you win!")
-// }
-// if (cell1.textContent === cell4.textContent && cell1.textContent === cell7.textContent) {
-//   window.alert ("you win!")
-// }
-// if (cell2.textContent === cell5.textContent && cell2.textContent === cell8.textContent) {
-//   window.alert ("you win!")
-// }
-// if (cell2.textContent === cell4.textContent && cell2.textContent === cell6.textContent) {
-//   window.alert ("you win!")
-// }
-// if (cell6.textContent === cell7.textContent && cell6.textContent === cell8.textContent) {
-//   window.alert ("you win!")
-// }
-// if (cell3.textContent === cell4.textContent && cell3.textContent === cell5.textContent) {
-//   window.alert ("you win!")
-// }
-// if (cell0.textContent === cell4.textContent && cell0.textContent === cell8.textContent) {
-//   window.alert("you win!")
-// } else if {
-//   window.alert ("you lose!")
-// }
-
-//else lose message
-//}
-
-//NAME FUNCTION
-//and then disable the buttons once they are entered...
+}
 
 // when user clicks a box, an X appears
 // let cell0 = document.getElementById("cell-0");
 cell0.addEventListener("click", (evt) => {
   selectedCell(cell0, 0);
-  //playerTurn = "O";
 });
 // let cell1 = document.getElementById("cell-1");
 cell1.addEventListener("click", (evt) => {
@@ -253,3 +234,67 @@ cell8.addEventListener("click", (evt) => {
 //     start.disabled = true; //disable button to start
 //  status.textContent = `it's ${currentPlayer}'s turn!`
 // }
+
+// if (playedCells[selectedCell] !== '' )
+// let win1 = ['cell-0', 'cell-1', 'cell-2']
+// let cellArray = ["X"]
+
+// if (evt.target.id === "cell-0") {
+// cellArray.push("X")
+// }
+
+//  winningMessage () => {
+// if(cell1.textContent === cell2.textContent && cell1.textContent === cell0.textContent) {
+//   window.alert ("you win!")
+// }
+// if (cell0.textContent === cell3.textContent && cell0.textContent === cell6.textContent) {
+//   window.alert ("you win!")
+// }
+// if (cell1.textContent === cell4.textContent && cell1.textContent === cell7.textContent) {
+//   window.alert ("you win!")
+// }
+// if (cell2.textContent === cell5.textContent && cell2.textContent === cell8.textContent) {
+//   window.alert ("you win!")
+// }
+// if (cell2.textContent === cell4.textContent && cell2.textContent === cell6.textContent) {
+//   window.alert ("you win!")
+// }
+// if (cell6.textContent === cell7.textContent && cell6.textContent === cell8.textContent) {
+//   window.alert ("you win!")
+// }
+// if (cell3.textContent === cell4.textContent && cell3.textContent === cell5.textContent) {
+//   window.alert ("you win!")
+// }
+// if (cell0.textContent === cell4.textContent && cell0.textContent === cell8.textContent) {
+//   window.alert("you win!")
+// } else if {
+//   window.alert ("you lose!")
+// }
+
+//else lose message
+//}
+
+//NAME FUNCTION
+//and then disable the buttons once they are entered...
+
+// changing button color on click (graying it out)
+//BUTTON DISAPPEARS NEED TO FIX !!!
+// let gameStart = start.addEventListener('click', (evt) => {
+//     status.textContent = `it's ${currentPlayer}'s turn!`;
+//     // start.disabled = true; //disable button to start
+//     start.style.backgroundColor = "gray";
+// start.style.borderColor = "lightgray";
+// let time = document.getElementById('clock');
+// // calling the clock and starting the timer
+// time.textContent = parseInt(time.textContent);
+// // makes the 0 which is a string, into a number, so it can add
+// let intervalFunction = setInterval(function () {
+//     // this is where a second adds on each time?
+//     let counter = parseInt(time.textContent) + 1;
+//     time.textContent = counter;
+// }, 1000);
+//     // adding 1000 milliseconds aka one second
+//     stop.addEventListener("click", (evt) => {
+//         clearInterval(intervalFunction)  // stop button stops it from counting
+//     });
+// });
