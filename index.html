@@ -1,71 +1,69 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link href="style.css" rel="stylesheet" />
+    <title>Tic Tac Toe</title>
+  </head>
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <link href="style.css" rel="stylesheet"/>
-  <title>Tic Tac Toe</title>
-</head>
-
-<body>
-  <h2>Tic Tac Toe</h2>
-  <div class="board">
-    <div id="row-1">
-      <div id="cell-0" class="cell"></div>
-      <div id="cell-1" class="cell"></div>
-      <div id="cell-2" class="cell"></div>
+  <body>
+    <h2>Tic Tac Toe</h2>
+    <div id= "contentWrapper">
+    <div class="board">
+      <div id="row-1">
+        <div id="cell-0" class="cell"></div>
+        <div id="cell-1" class="cell"></div>
+        <div id="cell-2" class="cell"></div>
+      </div>
+      <div id="row-2">
+        <div id="cell-3" class="cell"></div>
+        <div id="cell-4" class="cell"></div>
+        <div id="cell-5" class="cell"></div>
+      </div>
+      <div id="row-3">
+        <div id="cell-6" class="cell"></div>
+        <div id="cell-7" class="cell"></div>
+        <div id="cell-8" class="cell"></div>
+      </div>
     </div>
-    <div id="row-2">
-      <div id="cell-3" class="cell"></div>
-      <div id="cell-4" class="cell"></div>
-      <div id="cell-5" class="cell"></div>
-    </div>
-    <div id="row-3">
-      <div id="cell-6" class="cell"></div>
-      <div id="cell-7" class="cell"></div>
-      <div id="cell-8" class="cell"></div>
-    </div>
-  </div>
+</div>
+    <!--the line drawn across the board-->
 
+    <!-- <div id="strikethrough"></div> -->
 
+    <!-- THIS IS FOR NAME SELECTION -->
+    
+    <div id ="info-section">
+        <h3 id="title">Hello!</h3>
 
-  <!--the line drawn across the board-->
-  <div id="strikethrough"></div>
+        <!-- <form id= "selectMode"> -->
+        <button id="p-v-p">Player Vs Player</button>
+        <button id="p-v-c">Player Vs Computer</button>
+        <!-- </form> -->
 
-<!-- THIS IS FOR NAME SELECTION -->
+        <form id="user-form">
+         <label>Name 1:<input id="name1" type="text" /></label>
+         <label>Name 2:<input id="name2" type="text" /></label>
+          <input type="submit" value="Submit" />
+        </form>
 
-  <h1 id ="title">Hello! </h1>
-  
-<!-- <form id= "selectMode"> -->
-<button id= "p-v-p">Player Vs Player</button>
-<button id= "p-v-c">Player Vs Computer</button>
-<!-- </form> -->
+        <!-- buttons with status and score -->
+        <div id="status">
+          <br />
+          <br />
+        </div>
 
-  <form id="user-form">
-      <label>Name 1:<input id ="name1" type="text"/></label>
-      <label>Name 2:<input id= "name2" type="text"/></label>
-      <input type='submit' value='Submit'>
-  </form>
+        <button id="start" type="button">Start Game</button>
 
-
-  <!-- buttons with status and score -->
-  <div id="status"> 
-    <br>
-    <br>
-  </div>
-
-<button id="start" type="button">Start Game</button>
-
-  <div class ="timer"> 
-    <div id='clock'> 0</div>
-    <!-- <button id='start'>Start</button> -->
-    <!-- <button id='stop'>Stop</button>  -->
-  </div>
-
-  <script src='main.js'></script>
-</body>
-
+        <div class="timer">
+          <p>time elapsed: <span id="clock"> 0</span></p>
+          <!-- <button id='start'>Start</button> -->
+          <!-- <button id='stop'>Stop</button>  -->
+        </div>
+      </div>
+    
+    <script src="main.js"></script>
+  </body>
 </html>
-

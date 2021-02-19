@@ -3,10 +3,16 @@ h2 {
     text-align: center;
 }
 
+#contentWrapper{
+display: flex;
+align-items: center;
+justify-content: center;
+}
+
 .board {
     display: flex;
-    width: 70vw;
-    height: 70vh;
+    /* width: 70vw;
+    height: 70vh; */
     flex-direction: column;
     text-align: center;
    
@@ -43,6 +49,15 @@ h2 {
     width: 30vw;
 }
 
+
+
+#info-section {
+    display:flex;
+        flex-direction: column;
+    align-items:center;
+    justify-content: space-between;
+}
+
 .cell {
     border: 3px solid black;
     width: 10vw;
@@ -59,6 +74,12 @@ h2 {
     border: 1px solid red;
     background-color: coral;
 }
+
+button {
+    border: 1px solid red;
+    background-color: coral;
+}
+
 /*possibly our strikethrough*/
 #strikethrough{
     display: none;
