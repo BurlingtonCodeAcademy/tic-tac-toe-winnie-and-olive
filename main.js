@@ -78,7 +78,7 @@ inputForm.addEventListener("submit", (evt) => {
   evt.preventDefault();
   let userInput1 = document.getElementById("name1").value;
   let userInput2 = document.getElementById("name2").value;
-  //name 1 & 2 input
+  //name 1 & 2 input --- deleted .trim() after lowercase
   let lowerString1 = userInput1.toString().toLowerCase();
   let lowerString2 = userInput2.toString().toLowerCase();
   title.textContent = `Hello, ${lowerString1} and ${lowerString2}!`;
@@ -117,10 +117,36 @@ function selectedCell(clickedCell, cellIndex) {
 // cellArray.push("X")
 // }
 
-// function winningMessage () => {
-// if(cell1.textContent === cell2.textContent && cell1.textContent === cell0.textContent) {
-//   window.alert ("you win!")
-//} // winnie to type out the possible combos - ifs for all combos
+function winningMessage () => {
+if(cell1.textContent === cell2.textContent && cell1.textContent === cell0.textContent) {
+  window.alert ("you win!")
+} 
+if (cell0.textContent === cell3.textContent && cell0.textContent === cell6.textContent) {
+  window.alert ("you win!")
+}
+if (cell1.textContent === cell4.textContent && cell1.textContent === cell7.textContent) {
+  window.alert ("you win!")
+}
+if (cell2.textContent === cell5.textContent && cell2.textContent === cell8.textContent) {
+  window.alert ("you win!")
+}
+if (cell2.textContent === cell4.textContent && cell2.textContent === cell6.textContent) {
+  window.alert ("you win!")
+}
+if (cell6.textContent === cell7.textContent && cell6.textContent === cell8.textContent) {
+  window.alert ("you win!")
+}
+if (cell3.textContent === cell4.textContent && cell3.textContent === cell5.textContent) {
+  window.alert ("you win!")
+}
+if (cell0.textContent === cell4.textContent && cell0.textContent === cell8.textContent) {
+  window.alert("you win!")
+} else if {
+  window.alert ("you lose!")
+}
+
+
+
 
 //else lose message
 //}
