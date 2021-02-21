@@ -40,7 +40,6 @@ gameStart();
 //     });
 // }
 
-
 playerVSPlayer.addEventListener("click", selectMode);
 playerVSComp.addEventListener("click", selectMode);
 
@@ -64,6 +63,7 @@ function selectMode(evt) {
     console.log("pvc has been clicked");
     start.disabled = false;
     playerVSPlayer.style.display = "none";
+    pvcStart();
     // put in code for computer player gameplay
   }
 }
@@ -90,7 +90,7 @@ function firstTurn() {
 }
 
 function newPlayerTurn(evt) {
-  currentPlayer = currentPlayer === "O" ? "X" : "O";
+  currentPlayer = currentPlayer === "X" ? "O" : "X";
   if (currentPlayer === "X") {
     status.textContent = `It's ${lowerString1}'s turn!`;
     console.log(lowerString1);
@@ -100,18 +100,24 @@ function newPlayerTurn(evt) {
   }
   winCheck();
 }
-//moves = array of played cells
-//function for the computer being a player
-function compTurn(){
-  gameStart()
-  firstTurn()
-  newPlayerTurn() 
-  // computer does a click 
-  // computer picks a square by doing (Math.floor(Math.random) * 8).click * cell
-  let comp = moves[Math.floor(Math.random() * 8)]; //random cell generator
-  compMove.innerText = comp; //displays the cell they selected 
+function compTurn() {
+  if (currentPlayer === "O") {
+    let compGen = compMove[Math.floor(Math.random() * 8)];
+    console.log(compGen);
+  }
 }
 
+
+//moves = array of played cells
+//function for the computer being a player
+function pvcStart() {
+  gameStart();
+  firstTurn();
+}
+// computer does a click
+// computer picks a square by doing (Math.floor(Math.random) * 8).click * cell
+//random cell generator
+//displays the cell they selected
 
 // name grabber
 let title = document.getElementById("title");
@@ -143,7 +149,6 @@ function selectedCell(clickedCell, cellIndex) {
   }
 }
 
-
 const winningConditions = [
   [cell0, cell1, cell2],
   [cell0, cell3, cell6],
@@ -165,7 +170,8 @@ function winCheck() {
       win[0].textContent === win[1].textContent &&
       win[0].textContent === win[2].textContent
     ) {
-      status.textContent = `you win!`; //timing function to delay the alert (set interval and set timeout)
+      status.textContent = `you win!`; //winning message?
+      //timing function to delay the alert (set interval and set timeout)
       // clear the board function? to make the board empty and unclickab
       // function winAnimation(){
       //   document.getElementById("strikethrough")
@@ -173,8 +179,6 @@ function winCheck() {
     // gameActive = false;
   }
 }
-
-
 
 cell0.addEventListener("click", (evt) => {
   selectedCell(cell0, 0);
@@ -211,4 +215,3 @@ cell7.addEventListener("click", (evt) => {
 cell8.addEventListener("click", (evt) => {
   selectedCell(cell8, 8);
 });
-

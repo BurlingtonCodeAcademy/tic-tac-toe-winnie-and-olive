@@ -66,7 +66,7 @@ justify-content: center;
 }
 #status{
     width: 25vw;
-    height: 25wh;
+    height: 10vh;
     background-color: lavender;
     border: 2px solid blue;
 }
