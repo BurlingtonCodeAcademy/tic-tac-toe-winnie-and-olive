@@ -1,93 +1,125 @@
-
-h2 {
-    text-align: center;
+body {
+    background-color: #D5DCF9;
 }
 
-#contentWrapper{
-display: flex;
-align-items: center;
-justify-content: center;
+
+h2 {
+  text-align: center;
+  color: #0A1045;
+  text-shadow: 2px 2px #F9E900;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif; 
+}
+
+#contentWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .board {
-    display: flex;
-    /* width: 70vw;
+  display: flex;
+  /* width: 70vw;
     height: 70vh; */
-    flex-direction: column;
-    text-align: center;
-   
-}
-
-#row-1{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    border: 3px solid black;
-    height: 10vh;
-    width: 30vw;
-}
-
-#row-2{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    border: 3px solid black;
-    height: 10vh;
-    width: 30vw;
+  flex-direction: column;
+  text-align: center;
 }
 
 
-#row-3{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-direction: row;
-    border: 3px solid black;
-    height: 10vh;
-    width: 30vw;
+
+#row-1 {
+  display: flex;
+  flex-direction: row;
+  /*justify-content: space-between;*/
+  align-items: center;
+  height: 10vh;
+  width: 30vw;
 }
 
+#row-2 {
+  display: flex;
+  flex-direction: row;
+  /*justify-content: space-between;*/
+  align-items: center;
+  height: 10vh;
+  width: 30vw;
+}
 
+#row-3 {
+  display: flex;
+  /*justify-content: space-between;*/
+  align-items: center;
+  flex-direction: row;
+  height: 10vh;
+  width: 30vw;
+}
 
 #info-section {
-    display:flex;
-        flex-direction: column;
-    align-items:center;
-    justify-content: space-between;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .cell {
-    border: 3px solid black;
-    width: 10vw;
-    height: 10vh;
-    background-color: pink;
+  border: 3px solid #D5DCF9;
+  width: 10vw;
+  height: 10vh;
+  background-color:#0A1045;
+  color: lavenderblush;
+  justify-content: space-between;
+  align-items: stretch;
+  font-size: 80px;
+  font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
-#status{
-    width: 25vw;
-    height: 10vh;
-    background-color: lavender;
-    border: 2px solid blue;
+
+
+
+#status {
+  width: 25vw;
+  height: 5vh;
+  background-color: #F9E900;
+  border: 1px solid #0A1045;
+  text-align: center;
+  /* border: 2px solid blue; */
+  font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif
 }
-#start{
-    border: 1px solid red;
-    background-color: coral;
+#start {
+  background-color: #0A1045;
+  box-shadow: none;
+  color: white;
+  height: 3vh;
 }
 
 button {
-    border: 1px solid red;
-    background-color: coral;
+  background-color: #0A1045;
+  box-shadow: none;
+  color: white;
+  height: 3vh;
 }
 
-/*possibly our strikethrough*/
-#strikethrough{
-    display: none;
-    position: absolute;
-    height: 5px;
+#submit {
+  background-color: #0A1045;
+  box-shadow: none;
+  color: white;
+  height: 3vh;
 }
-#strikethrough div{
-    background-color: black;
-    height: 5px;
-    width: 0px;
+#title{
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    color: #BB7E8C;
+}
+.timer{
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    color: #BB7E8C;
+}
+#name1{
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    color: #0A1045;
+}
+#name2{
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    color: #0A1045;
+}
+#input{
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    color: #BB7E8C;
 }
