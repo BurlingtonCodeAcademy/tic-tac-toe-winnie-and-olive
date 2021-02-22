@@ -1,0 +1,15 @@
+{
+	"folders": [
+		{
+			"path": "../.."
+		},
+		{
+			"path": "../../../Downloads/RPSgame-main"
+		}
+	],
+	"settings": {
+		"liveshare.diagnosticMode": true,
+		"liveshare.allowInvites": "all",
+		"liveServer.settings.multiRootWorkspaceName": "code"
+	}
+}
