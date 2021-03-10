@@ -1,19 +1,13 @@
 let start = document.getElementById("start"); //to start game and timer?
-// let stop = document.getElementById("stop"); //this is to stop clock...
-// let status = document.getElementById("status"); //this shows who turn it is
 let compOMove = document.getElementById("compOMove");
 let playerXMove = document.getElementById("playerXMove");
 let playerVSPlayer = document.getElementById("p-v-p");
 let playerVSComp = document.getElementById("p-v-c");
-// let selectMode = document.getElementById("selectMode");
 let submit = document.getElementById("submit");
-// let board = document.getElementsByClassName("board")
-// let cell = document.getElementsByClassName("cell")
+//these are our basic element functions. Moves, players, submit and start buttons
 
-// let interval = 0;
-// let compWins = 0;
-// let playerWins = 0;
 
+//these are our cells
 let cell0 = document.getElementById("cell-0");
 let cell1 = document.getElementById("cell-1");
 let cell2 = document.getElementById("cell-2");
@@ -23,10 +17,9 @@ let cell5 = document.getElementById("cell-5");
 let cell6 = document.getElementById("cell-6");
 let cell7 = document.getElementById("cell-7");
 let cell8 = document.getElementById("cell-8");
-
+//status displaying who's turn/winner
 let status = document.getElementById("status");
-// let gameActive = true; //whether game is restarted
-let currentPlayer = "X"; //this will be changed, but starts with player/user X
+let currentPlayer = "X"; 
 let playedCells = ["", "", "", "", "", "", "", "", ""];
 let cellArr = [
   "cell-0",
@@ -42,26 +35,26 @@ let cellArr = [
 let lowerString1 = "X";
 let lowerString2 = "O";
 let oStatus = "human";
+//X and O player... and starting status as human 
 
-// gameStart();
 
 console.log(cellArr[1]);
-
+//buttons clicked to select which mode is going to start (PVP or PVC)
 playerVSPlayer.addEventListener("click", selectMode);
 playerVSComp.addEventListener("click", selectMode);
-
+//disables once button is clicked cannot be clicked again
 start.disabled = true;
-// cell.disabled = true;
+
 let userForm = document.getElementById("user-form");
 userForm.style.display = "none";
 
-// userForm.disabled = true; //style attribute to make it not display
+//start of selecting mode before game
 function selectMode(evt) {
-  // evt.preventDefault();
+ 
   start.disabled = true;
   if (evt.target.id === "p-v-p") {
     console.log("pvp has been clicked");
-    // start.disabled = true;
+ 
     playerVSComp.style.display = "none";
     userForm.style.display = "block";
     submit.addEventListener("click", firstTurn);
@@ -72,26 +65,25 @@ function selectMode(evt) {
   } else if (evt.target.id === "p-v-c") {
     oStatus = "computer"; //tells us that when computer button is clicked, the computer is player O
     console.log("pvc has been clicked");
-    // start.disabled = true;
+   
     playerVSPlayer.style.display = "none";
     pvcStart();
   }
 }
-
+//game start function. waits for start button to be clicked then goes to firstTurn function
 function gameStart() {
-  // cell.disabled = false;
+ 
   console.log("start working");
   status.innerHTML = `It's ${currentPlayer} 's turn`; //this displays current player turn
   start.addEventListener("click", firstTurn);
 }
-
+//firstTurn function after game is started and player selected
 function firstTurn() {
-  // gameStart()
-  // cellClick();
+  //this changes clicked button colors
   start.style.backgroundColor = "gray";
   start.style.borderColor = "lightgray";
   start.disabled = false;
-  // cell.disabled = false;
+  
   console.log("cell enabled");
   status.textContent = `It's ${currentPlayer} 's turn`;
   let time = document.getElementById("clock");
@@ -103,6 +95,8 @@ function firstTurn() {
     let counter = parseInt(time.textContent) + 1;
     time.textContent = counter;
   }, 1000);
+
+  //event listener for each cell to tell when button is clicked so computer knows to change color and not pick these selected cells
   cell0.addEventListener("click", (evt) => {
     selectedCell(cell0, 0);
   });
@@ -139,9 +133,9 @@ function firstTurn() {
     selectedCell(cell8, 8);
   });
 }
-
+//second turn/ makes sure opposite character goes (when not X, O goes)
 function newPlayerTurn(evt) {
-  // cellClick();
+  
   currentPlayer = currentPlayer === "X" ? "O" : "X";
   if (currentPlayer === "X") {
     status.textContent = `It's ${lowerString1}'s turn!`;
@@ -155,6 +149,7 @@ function newPlayerTurn(evt) {
   }
   winCheck();
 }
+//if computer turn, this insures computer doesn't go to cell that has been clicked already and goes back to newPlayerTurn afterwards
 function compTurn() {
   if (currentPlayer === "O") {
     let compGen = cellArr[Math.floor(Math.random() * cellArr.length)];
@@ -164,17 +159,16 @@ function compTurn() {
     newPlayerTurn();
     cellArr = cellArr.filter((item) => item !== compGen);
     console.log(cellArr);
-    //gameStart();
+    
   }
 }
 
 //moves = array of played cells
 //function for the computer being a player
 function pvcStart() {
-  // gameStart();
+  
   firstTurn();
-  // compTurn();
-  // console.log(compTurn)
+  
 }
 // computer does a click
 // computer picks a square by doing (Math.floor(Math.random) * 8).click * cell
@@ -185,8 +179,8 @@ function pvcStart() {
 let title = document.getElementById("title");
 let inputForm = document.getElementById("user-form");
 
-// function nameGrabber() {
 
+//this is what displays name in status bar also cleans up name to be same format each time
 inputForm.addEventListener("submit", (evt) => {
   evt.preventDefault();
   let userInput1 = document.getElementById("name1").value;
@@ -197,12 +191,10 @@ inputForm.addEventListener("submit", (evt) => {
   title.textContent = `Hello, ${lowerString1} and ${lowerString2}!`;
 });
 
-//   for (let player of currentPlayer) {
-//   player.removeEventListener ("click", firstTurn)
-//   }
 
+//this alerts if cell that is clicked is already occupied, or allows click and enacts newPlayerTurn
 function selectedCell(clickedCell, cellIndex) {
-  //gameState[cellIndex] = currentPlayer;
+  
   if (clickedCell.innerHTML != "") {
     window.alert("please select an empty cell");
   } else {
@@ -213,7 +205,7 @@ function selectedCell(clickedCell, cellIndex) {
     newPlayerTurn();
   }
 }
-
+//all possible winning condition combos
 const winningConditions = [
   [cell0, cell1, cell2],
   [cell0, cell3, cell6],
@@ -224,7 +216,7 @@ const winningConditions = [
   [cell3, cell4, cell5],
   [cell0, cell4, cell8],
 ];
-
+//checking for win, seeing that both 3 cells are clicked in a row and that they are possible winning combo. then changes winning cells to diff color
 function winCheck() {
   console.log("winningcheck");
   for (let win of winningConditions) {
@@ -241,8 +233,6 @@ function winCheck() {
       status.textContent = `you win!`; //winning message?
       //timing function to delay the alert (set interval and set timeout)
       // clear the board function? to make the board empty and unclickab
-      // function winAnimation(){
-      //   document.getElementById("strikethrough")
-    }
+     
   }
 }
